@@ -1,34 +1,68 @@
-# Speed of a Human Detector (C++17)
+# 🏃 Speed of a Human Detector (C++17 + OpenCV)
 
-A computer-vision based speed estimation system that calculates human movement speed using frame differencing and centroid tracking.
+A computer-vision project that detects a moving human in a video sequence and estimates their **speed in meters per second** using frame-to-frame tracking.
 
-## 🎯 Objective
-Estimate the real-world walking/running speed of a person captured on video.
-
-## 🛠️ Technical Highlights
-- **OpenCV C++ API** for real-time image processing
-- **Centroid tracking algorithm**
-- **Frame-to-frame displacement estimation**
-- **Basic calibration for pixel-to-meter conversion**
+---
 
 ## 🚀 Features
-- Motion detection from raw video frames
-- Bounding box + centroid extraction
-- Speed calculation (m/s or km/h)
-- Adjustable thresholds for noise reduction
 
+- 👤 Human detection via OpenCV HOG model
+- 🔁 Frame-to-frame motion tracking
+- 📏 Pixel-to-meter speed conversion
+- 🧮 Clear mathematical modeling of displacement
 
-## 🧪 What This Demonstrates
-- Strong C++/OpenCV proficiency  
-- Signal & noise filtering understanding  
-- Ability to design **deterministic image-processing pipelines**  
-- Debugging of **real-time, frame-based systems**
+---
 
-## 📈 Future Improvements
-- Kalman filter for smoother tracking  
-- Camera calibration for higher accuracy  
-- Support for multi-person tracking  
+## 🧩 Architecture Overview
 
+```mermaid
+flowchart TD
+    A[Video Input] --> B[HOG Human Detector]
+    B --> C[Bounding Box Tracker]
+    C --> D[Speed Calculator]
+    E[Calibration Settings] --> D
+    D --> F[Output: Speed m/s]
+```
 
+---
 
+## 🛠️ Build Instructions
 
+### Build
+
+```bash
+mkdir build && cd build
+cmake ..
+make
+```
+
+### Run
+
+```bash
+./human_speed_detector video.mp4
+```
+
+---
+
+## 🔢 How Speed is Calculated
+
+```
+Speed = (Pixel Displacement / Calibration Factor) / Time Interval
+```
+
+---
+
+## 💡 What I Learned
+
+- Feature tracking & bounding box stabilization
+- Real-time OpenCV pipelines
+- Mapping image space to real-world metrics
+- Performance optimization
+
+---
+
+## 🚧 Future Improvements
+
+- Deep learning–based person detection (YOLOv8)
+- Kalman filter for smoother tracking
+- Multi-person tracking
